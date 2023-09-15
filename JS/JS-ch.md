@@ -80,7 +80,58 @@ console.log(clonedObj === obj)  // false，返回的是一个新对象
 console.log(clonedObj.arr === obj.arr)  // false，说明拷贝的不是引用
 console.log(clonedObj.test===obj.test) // false
 ```
-### 手写Promise
+### Promise
 Promise是es6新增的语法，解决了回调地狱的问题。
-可以把Promise看成一个状态机制 
+可以把Promise看成一个状态机。初始是`pending`状态，可以通过函数`resolve`和`reject`,将状态转变为 `resolve`或者`rejected`状态，状态一旦改变就不能再次变化。
+
+`.then和.catch`用于处理回调，`.then`中会接收两个函数，第一个函数是成功的回调函数，第二个参数是失败的回调函数。`.catch`中只能接收一个参数就是失败的回调函数。`.catch`一般是放在最后，可以解决一个Promise异常穿透的问题。
+- 手写Promise
+```js
+class MyPromise{
+    constructor(executor){
+        // 初始值
+        this.initValue();
+        // 初始化this指向 this指向永远是当前MyPromise实例
+        this.initBind();
+        try{
+            // 执行传进来的函数
+            executor(this.resolve, this.reject);
+        }
+    }
+    initValue(){
+        this.PromiseResult = null; // 终值
+        this.PromiseState = 'pending' // 状态
+        this.onFulfilledCallbacks = []; // 保存成功回调
+        this.onRejectedCallbacks = []; // 失败的回调
+    }
+    initBind(){
+        this.resolve = this.resolve.bind(this);
+        this.reject = this.reject.bind(this);
+    }
+    resolve(value){
+        // 状态一旦改变不可以再次改变
+        if(this.PromiseState !== 'pending') return;
+        // 如果执行resolve,状态改为fulfilled
+        this.PromiseState = 'fulfilled';
+        // 终值为传进来的值
+        this.PromiseResult = value;
+        // 执行保存的成功回调
+        while(this.onFulfilledCallbacks.length){
+            this.onFulfilledCallbacks.shift()(this.PromiseResult);
+        }
+    }
+    reject(reason){
+        if(this.PromiseState !== 'pending') return;
+        // 如果执行reject，状态变为fulfilled
+        this.PromiseState = 'rejected';
+        // 终值为传进来的值
+        this.PromiseResult = reason;
+        // 执行保存的失败回调
+        while(this.onRejectedCallbacks.length){
+            this.onRejectedCallbacks.shift()(this.PromiseResult)
+        }
+    }
+}
+```
+
 
