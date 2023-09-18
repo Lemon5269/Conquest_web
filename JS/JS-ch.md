@@ -686,4 +686,3 @@ function Father(name){
     console.log(s.constructor === Father); // false
     console.log(s.constructor === Son); // true
     ```
-
