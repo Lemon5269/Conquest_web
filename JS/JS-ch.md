@@ -1,6 +1,22 @@
+<!-- vscode-markdown-toc -->
+* 1. [深拷贝浅拷贝](#)
+* 2. [Promise概述 + 手写Promise](#PromisePromise)
+* 3. [手写Promise.all和Promise.allSettled](#Promise.allPromise.allSettled)
+* 4. [Promise经典考题](#Promise)
+* 5. [数组常用方法](#-1)
+* 6. [数组去重常用的方法](#-1)
+* 7. [数组扁平化](#-1)
+* 8. [数组乱序（shuffle）](#shuffle)
+* 9. [函数柯里化](#-1)
+* 10. [instanceof和typeof的原理](#instanceoftypeof)
+* 11. [js实现继承的5种方法](#js5)
 
-
-## 深拷贝浅拷贝
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+##  1. <a name=''></a>深拷贝浅拷贝
 __实现浅拷贝的常用方法__：只能拷贝第一层，深层次无法实现
 - `Object.Assign`
 - 解构赋值
@@ -80,7 +96,7 @@ console.log(clonedObj === obj)  // false，返回的是一个新对象
 console.log(clonedObj.arr === obj.arr)  // false，说明拷贝的不是引用
 console.log(clonedObj.test===obj.test) // false
 ```
-## Promise概述 + 手写Promise
+##  2. <a name='PromisePromise'></a>Promise概述 + 手写Promise
 Promise是es6新增的语法，解决了回调地狱的问题。
 可以把Promise看成一个状态机。初始是`pending`状态，可以通过函数`resolve`和`reject`,将状态转变为 `resolve`或者`rejected`状态，状态一旦改变就不能再次变化。
 
@@ -257,7 +273,7 @@ class MyPromise{
     }
 }
 ```
-## 手写Promise.all和Promise.allSettled
+##  3. <a name='Promise.allPromise.allSettled'></a>手写Promise.all和Promise.allSettled
 `Promise.all`：同时执行多个Promise对象（以数组的形式传入）。两种情况，当所有的Promise状态为fulfilled时，新的Promise状态为fullfilled，并且将所有的Promise的返回值组成一个数字；当有一个Promise状态为reject时，新的Promise状态为reject，并且会将第一个reject的返回值作为参数。
 
 __缺点__：当有一个Promise变为reject状态时，新的Promise就会立即变成对应的reject状态，对于resolved以及依然处于pending状态的Promise，就获取不到对应的结果。
@@ -330,7 +346,7 @@ console.log(myPromiseAllSettled([p,Promise.resolve(1), Promise.reject(2)]).then(
     console.log(res)
 })) 
 ```
-## Promise经典考题
+##  4. <a name='Promise'></a>Promise经典考题
 - 一
     ```js
      new Promise((res, rej) => {
@@ -359,7 +375,7 @@ console.log(myPromiseAllSettled([p,Promise.resolve(1), Promise.reject(2)]).then(
     });
     console.log('end');
     ```
-## 数组常用方法
+##  5. <a name='-1'></a>数组常用方法
 - 可以改变原数组的方法
     - push()
     - pop()
@@ -405,7 +421,7 @@ console.log(myPromiseAllSettled([p,Promise.resolve(1), Promise.reject(2)]).then(
     - every()
     - find()
     - findIndex()
-## 数组去重常用的方法
+##  6. <a name='-1'></a>数组去重常用的方法
 - 方法一：使用set
 ```js
 const arr = [1,1,2,2,3,4];
@@ -448,7 +464,7 @@ function unique(arr){
     return res;
 }
 ```
-## 数组扁平化
+##  7. <a name='-1'></a>数组扁平化
 将数组拉平的过程
 - 方法一：使用递归+concat
 ```js
@@ -478,7 +494,7 @@ function flatten(arr){
 }
 console.log(flatten(arrNum)) //  [1, 2, 3, 4，5, 6, 7]
 ```
-## 数组乱序（shuffle）
+##  8. <a name='shuffle'></a>数组乱序（shuffle）
 - Math.floor() 向下取整 2.7 -> 2
 - Math.ceil() 向上取整 2.7 -> 3
 - Math.round() 四舍五入
@@ -497,7 +513,7 @@ function shuffle(arr){
     return arr;
 }
 ```
-## 函数柯里化
+##  9. <a name='-1'></a>函数柯里化
 通俗理解：用闭包把参数保存起来，当参数的数量足够执行函数了，就开始执行函数。
 - 实现
     - 判断当前函数传入的参数是否大于或等于`fn`需要参数的数量，如果是，直接执行fn
@@ -520,7 +536,7 @@ curryingFun(1)(2)(3);  // 1 2 3
 // curryingFun(1, 2, 3);  // 1 2 3 
 
 ```
-## instanceof和typeof的原理
+##  10. <a name='instanceoftypeof'></a>instanceof和typeof的原理
 - instanceof：测试一个对象在其原型链中是否存在一个构造函数的prototype属性，简单来说就是通过 __原型链__ 去查找。
 - typeof：js在底层存储变量的时候，会在变量的机器码的低位1-3位存储其类型信息
     - 000 对象
@@ -541,7 +557,7 @@ function getType(x){
     return type.toLowerCase();
 }
 ```
-## js实现继承的5种方法
+##  11. <a name='js5'></a>js实现继承的5种方法
 __父类__
 ```js
 function Father(name){
