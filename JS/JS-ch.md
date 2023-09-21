@@ -67,34 +67,6 @@ function deepClone(originValue, visited = new WeakMap()) {
   }
   return newValue
 }
-
-// 测试的obj对象
-const obj = {
-  // =========== 1.基础数据类型 ===========
-  num: 0, // number
-  str: '', // string
-  bool: true, // boolean
-  unf: undefined, // undefined
-  nul: null, // null
-  sym: Symbol('sym'), // symbol
-  bign: BigInt(1n), // bigint,
-  arr: [1, 2, 3, 4],
-  test: function(){
-      console.log('2312')
-  }
-};
-let obj2 = {
-  name: '111'
-}
-obj.obj2 = obj2;
-obj2.obj = obj;
-// 开头的测试obj存在循环引用，除去这个条件进行测试
-const clonedObj = deepClone(obj)
-
-// 测试
-console.log(clonedObj === obj)  // false，返回的是一个新对象
-console.log(clonedObj.arr === obj.arr)  // false，说明拷贝的不是引用
-console.log(clonedObj.test===obj.test) // false
 ```
 ##  2. <a name='PromisePromise'></a>Promise概述 + 手写Promise
 Promise是es6新增的语法，解决了回调地狱的问题。
