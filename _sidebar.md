@@ -1,5 +1,5 @@
 * [首页](/README)
-* [JavaScript](/JS/JS-ch.md)
+* [JavaScript](./JS/JS-ch.md)
 <!-- * [Git](./Git/git-zh.md)
 * [浏览器](./Browser/browser-ch.md)
 * [计算机网络](./Network/Network-zh.md)
