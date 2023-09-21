@@ -68,6 +68,7 @@ function deepClone(originValue, visited = new WeakMap()) {
   return newValue
 }
 ```
+
 ##  2. <a name='PromisePromise'></a>Promise概述 + 手写Promise
 Promise是es6新增的语法，解决了回调地狱的问题。
 可以把Promise看成一个状态机。初始是`pending`状态，可以通过函数`resolve`和`reject`,将状态转变为 `resolve`或者`rejected`状态，状态一旦改变就不能再次变化。
