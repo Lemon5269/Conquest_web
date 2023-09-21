@@ -39,6 +39,12 @@
 - [从输入 URL 到页面加载完成的过程](#%E4%BB%8E%E8%BE%93%E5%85%A5-url-%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%E7%9A%84%E8%BF%87%E7%A8%8B)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+## 跨域问题
+
+### 跨域是如何产生的
+同源策略：`IP`、`域名`、`端口号`三者必须一致，否则为非同源。
+
+### 解决可与问题
 
 # UDP
 
