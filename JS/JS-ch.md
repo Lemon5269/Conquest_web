@@ -46,6 +46,7 @@ let obj = {
 let newObj = JSON.parse(JSON.stringfy(obj))
 console.log(obj === newObj); // false
 ```
+
 - 手写深拷贝（解决了循环引用和函数拷贝的问题）
 ```js
 function isObject(value) {
@@ -67,6 +68,31 @@ function deepClone(originValue, visited = new WeakMap()) {
   }
   return newValue
 }
+const obj = {
+  num: 0, // number
+  str: '', // string
+  bool: true, // boolean
+  unf: undefined, // undefined
+  nul: null, // null
+  sym: Symbol('sym'), // symbol
+  bign: BigInt(1n), // bigint,
+  arr: [1, 2, 3, 4],
+  test: function(){
+      console.log('2312')
+  }
+};
+let obj2 = {
+  name: '111'
+};
+obj.obj2 = obj2;
+obj2.obj = obj;
+// 开头的测试obj存在循环引用，除去这个条件进行测试
+const clonedObj = deepClone(obj)
+
+// 测试
+console.log(clonedObj === obj)  // false，返回的是一个新对象
+console.log(clonedObj.arr === obj.arr)  // false，说明拷贝的不是引用
+console.log(clonedObj.test===obj.test) // false
 ```
 
 ##  2. <a name='PromisePromise'></a>Promise概述 + 手写Promise
