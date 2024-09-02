@@ -1,8 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
 - [深拷贝浅拷贝](#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D)
 - [Promise 概述 + 手写 Promise](#promise-%E6%A6%82%E8%BF%B0--%E6%89%8B%E5%86%99-promise)
 - [手写 Promise.all 和 Promise.allSettled](#%E6%89%8B%E5%86%99-promiseall-%E5%92%8C-promiseallsettled)
@@ -19,6 +17,7 @@
 - [new 操作符](#new-%E6%93%8D%E4%BD%9C%E7%AC%A6)
 - [xhrfetchaxios](#xhrfetchaxios)
 - [JS 垃圾回收机制](#js-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6)
+- [window.onerror 和 window.addEventListener('error')的区别](#windowonerror-%E5%92%8C-windowaddeventlistenererror%E7%9A%84%E5%8C%BA%E5%88%AB)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
