@@ -933,10 +933,33 @@ window.onerror = function(message, source, lineno, colno, error) { ... }
   - 由于网络请求异常不会事件冒泡，因此必须在捕获阶段将其捕捉到才行，于是 window.addEventListener 设置为 true 在捕获阶段进行，网络请求错误可以捕获，但是获取不到具体错误信息；
     ![alt text](image.png)
 
-**注意**：
+```js
+// 可以捕获资源加载异常
+window.addEventListener(
+  "error",
+  (error) => {
+    console.log("捕获到异常：", error);
+  },
+  true
+);
+// 注意这里一定要设置 true，捕获阶段监听才可以捕获资源加载异常
+
+console.log(notdefined111);
+console.log("666");
+
+//  可以捕获 forEach 中的异常
+let arr = [1, 2, 3];
+arr.forEach((item) => {
+  throw new Error(" foreach 抛出异常");
+});
+```
+
+**注意(针对 addEventListener 错误)**：
 如果 A 网站使用 B（CDN） 域名下的 js 资源，但是 JS 执行报错了，浏览器只会给出 `Script error` 错误提示，不会有具体报错信息，原因是：**浏览器的同源策略限制**。
 解决方案：
 
 1. script 增加 crossorigin,
 2. 服务端配置：Access-Control-Allow-Origin: b.com
 3. 代码劫持后重写
+
+综上：选择使用哪种机制取决于您的具体需求。例如，如果您需要一个简单的全局错误捕捉，那么使用 window.onerror 会更合适。如果您的应用需要对错误进行更细致的管理，考虑使用 addEventListener，尽管在捕获某些类型的错误时，需要结合其他的错误处理机制。
