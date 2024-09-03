@@ -1,8 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
 - [时间复杂度](#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6)
 - [位运算](#%E4%BD%8D%E8%BF%90%E7%AE%97)
   - [左移 <<](#%E5%B7%A6%E7%A7%BB-)
@@ -29,9 +27,11 @@
   - [树的深度](#%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6)
 - [动态规划](#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
   - [斐波那契数列](#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97)
-  - [0 - 1 背包问题](#0---1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)
+  - [0 - 1 背包问题](#0---1-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)
   - [最长递增子序列](#%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97)
 - [字符串相关](#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3)
+- [关于 Map](#%E5%85%B3%E4%BA%8E-map)
+  - [49-字母异位词分组](#49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
