@@ -1,6 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
 
 - [时间复杂度](#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6)
 - [位运算](#%E4%BD%8D%E8%BF%90%E7%AE%97)
@@ -28,7 +29,7 @@
   - [树的深度](#%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6)
 - [动态规划](#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92)
   - [斐波那契数列](#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97)
-  - [0 - 1背包问题](#0---1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)
+  - [0 - 1 背包问题](#0---1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)
   - [最长递增子序列](#%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97)
 - [字符串相关](#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3)
 
@@ -50,13 +51,13 @@
 
 在学习位运算之前应该知道十进制如何转二进制，二进制如何转十进制。这里说明下简单的计算方式
 
-- 十进制 `33` 可以看成是 `32 + 1` ，并且 `33` 应该是六位二进制的（因为 `33` 近似 `32`，而 `32` 是 2 的五次方，所以是六位），那么 十进制 `33` 就是 `100001` ，只要是 2 的次方，那么就是 1否则都为 0
+- 十进制 `33` 可以看成是 `32 + 1` ，并且 `33` 应该是六位二进制的（因为 `33` 近似 `32`，而 `32` 是 2 的五次方，所以是六位），那么 十进制 `33` 就是 `100001` ，只要是 2 的次方，那么就是 1 否则都为 0
 - 那么二进制 `100001` 同理，首位是 `2^5` ，末位是 `2^0` ，相加得出 33
 
 ## 左移 <<
 
 ```js
-10 << 1 // -> 20
+10 << 1; // -> 20
 ```
 
 左移就是将二进制全部往左移动，`10` 在二进制中表示为 `1010` ，左移一位后变成 `10100` ，转换为十进制也就是 20，所以基本可以把左移看成以下公式 `a * (2 ^ b)`
@@ -64,15 +65,15 @@
 ## 算数右移 >>
 
 ```js
-10 >> 1 // -> 5
+10 >> 1; // -> 5
 ```
 
 算数右移就是将二进制全部往右移动并去除多余的右边，`10` 在二进制中表示为 `1010` ，右移一位后变成 `101` ，转换为十进制也就是 5，所以基本可以把右移看成以下公式 `int v = a / (2 ^ b)`
 
-右移很好用，比如可以用在二分算法中取中间值 
+右移很好用，比如可以用在二分算法中取中间值
 
 ```js
-13 >> 1 // -> 6
+13 >> 1; // -> 6
 ```
 
 ## 按位操作
@@ -82,7 +83,7 @@
 每一位都为 1，结果才为 1
 
 ```js
-8 & 7 // -> 0
+8 & 7; // -> 0
 // 1000 & 0111 -> 0000 -> 0
 ```
 
@@ -91,7 +92,7 @@
 其中一位为 1，结果就是 1
 
 ```js
-8 | 7 // -> 15
+8 | 7; // -> 15
 // 1000 | 0111 -> 1111 -> 15
 ```
 
@@ -100,8 +101,8 @@
 每一位都不同，结果才为 1
 
 ```js
-8 ^ 7 // -> 15
-8 ^ 8 // -> 0
+8 ^ 7; // -> 15
+8 ^ 8; // -> 0
 // 1000 ^ 0111 -> 1111 -> 15
 // 1000 ^ 1000 -> 0000 -> 0
 ```
@@ -114,11 +115,11 @@
 
 ```js
 function sum(a, b) {
-    if (a == 0) return b
-    if (b == 0) return a
-    let newA = a ^ b
-    let newB = (a & b) << 1
-    return sum(newA, newB)
+  if (a == 0) return b;
+  if (b == 0) return a;
+  let newA = a ^ b;
+  let newB = (a & b) << 1;
+  return sum(newA, newB);
 }
 ```
 
@@ -128,12 +129,12 @@ function sum(a, b) {
 
 ```js
 function checkArray(array) {
-    if (!array || array.length <= 2) return
+  if (!array || array.length <= 2) return;
 }
 function swap(array, left, right) {
-    let rightValue = array[right]
-    array[right] = array[left]
-    array[left] = rightValue
+  let rightValue = array[right];
+  array[right] = array[left];
+  array[left] = rightValue;
 }
 ```
 
@@ -153,14 +154,14 @@ function bubble(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // 从 0 到 `length - 1` 遍历
     for (let j = 0; j < i; j++) {
-      if (array[j] > array[j + 1]) swap(array, j, j + 1)
+      if (array[j] > array[j + 1]) swap(array, j, j + 1);
     }
   }
   return array;
 }
 ```
 
-该算法的操作次数是一个等差数列 `n + (n - 1) + (n - 2) + 1` ，去掉常数项以后得出时间复杂度是 O(n * n)
+该算法的操作次数是一个等差数列 `n + (n - 1) + (n - 2) + 1` ，去掉常数项以后得出时间复杂度是 O(n \* n)
 
 ## 插入排序
 
@@ -181,7 +182,7 @@ function insertion(array) {
 }
 ```
 
-该算法的操作次数是一个等差数列 `n + (n - 1) + (n - 2) + 1` ，去掉常数项以后得出时间复杂度是 O(n * n)
+该算法的操作次数是一个等差数列 `n + (n - 1) + (n - 2) + 1` ，去掉常数项以后得出时间复杂度是 O(n \* n)
 
 ## 选择排序
 
@@ -205,7 +206,7 @@ function selection(array) {
 }
 ```
 
-该算法的操作次数是一个等差数列 `n + (n - 1) + (n - 2) + 1` ，去掉常数项以后得出时间复杂度是 O(n * n)
+该算法的操作次数是一个等差数列 `n + (n - 1) + (n - 2) + 1` ，去掉常数项以后得出时间复杂度是 O(n \* n)
 
 ## 归并排序
 
@@ -255,23 +256,21 @@ function mergeSort(array, left, right) {
 以上算法使用了递归的思想。递归的本质就是压栈，每递归执行一次函数，就将该函数的信息（比如参数，内部的变量，执行到的行数）压栈，直到遇到终止条件，然后出栈并继续执行函数。对于以上递归函数的调用轨迹如下
 
 ```js
-mergeSort(data, 0, 6) // mid = 3
-  mergeSort(data, 0, 3) // mid = 1
-    mergeSort(data, 0, 1) // mid = 0
-      mergeSort(data, 0, 0) // 遇到终止，回退到上一步
-    mergeSort(data, 1, 1) // 遇到终止，回退到上一步
-    // 排序 p1 = 0, p2 = mid + 1 = 1
-    // 回退到 `mergeSort(data, 0, 3)` 执行下一个递归
-  mergeSort(2, 3) // mid = 2
-    mergeSort(3, 3) // 遇到终止，回退到上一步
-  // 排序 p1 = 2, p2 = mid + 1 = 3
-  // 回退到 `mergeSort(data, 0, 3)` 执行合并逻辑
-  // 排序 p1 = 0, p2 = mid + 1 = 2
-  // 执行完毕回退
-  // 左边数组排序完毕，右边也是如上轨迹
+mergeSort(data, 0, 6); // mid = 3
+mergeSort(data, 0, 3); // mid = 1
+mergeSort(data, 0, 1); // mid = 0
+mergeSort(data, 0, 0); // 遇到终止，回退到上一步
+mergeSort(data, 1, 1); // 遇到终止，回退到上一步
+// 排序 p1 = 0, p2 = mid + 1 = 1
+// 回退到 `mergeSort(data, 0, 3)` 执行下一个递归
+mergeSort(2, 3); // mid = 2
+mergeSort(3, 3); // 遇到终止，回退到上一步
+// 排序 p1 = 2, p2 = mid + 1 = 3
+// 回退到 `mergeSort(data, 0, 3)` 执行合并逻辑
+// 排序 p1 = 0, p2 = mid + 1 = 2
+// 执行完毕回退
+// 左边数组排序完毕，右边也是如上轨迹
 ```
-
-
 
 该算法的操作次数是可以这样计算：递归了两次，每次数据量是数组的一半，并且最后把整个数组迭代了一次，所以得出表达式 `2T(N / 2) + T(N)` （T 代表时间，N 代表数据量）。根据该表达式可以套用 [该公式](https://www.wikiwand.com/zh-hans/%E4%B8%BB%E5%AE%9A%E7%90%86) 得出时间复杂度为 `O(N * logN)`
 
@@ -332,7 +331,7 @@ function part(array, left, right) {
 以下是代码实现
 
 ```js
-var sortColors = function(nums) {
+var sortColors = function (nums) {
   let left = -1;
   let right = nums.length;
   let i = 0;
@@ -354,32 +353,32 @@ var sortColors = function(nums) {
 以下是代码实现
 
 ```js
-var findKthLargest = function(nums, k) {
-  let l = 0
-  let r = nums.length - 1
+var findKthLargest = function (nums, k) {
+  let l = 0;
+  let r = nums.length - 1;
   // 得出第 K 大元素的索引位置
-  k = nums.length - k
+  k = nums.length - k;
   while (l < r) {
     // 分离数组后获得比基准树大的第一个元素索引
-    let index = part(nums, l, r)
+    let index = part(nums, l, r);
     // 判断该索引和 k 的大小
     if (index < k) {
-      l = index + 1
+      l = index + 1;
     } else if (index > k) {
-      r = index - 1
+      r = index - 1;
     } else {
-      break
+      break;
     }
   }
-  return nums[k]
+  return nums[k];
 };
 function part(array, left, right) {
   let less = left - 1;
   let more = right;
   while (left < more) {
     if (array[left] < array[right]) {
-	   ++less;
-       ++left;
+      ++less;
+      ++left;
     } else if (array[left] > array[right]) {
       swap(array, --more, left);
     } else {
@@ -390,8 +389,6 @@ function part(array, left, right) {
   return more;
 }
 ```
-
-
 
 ## 堆排序
 
@@ -476,28 +473,26 @@ function heapify(array, index, size) {
 以下是实现该算法的代码
 
 ```js
-var reverseList = function(head) {
-    // 判断下变量边界问题
-    if (!head || !head.next) return head
-    // 初始设置为空，因为第一个节点反转后就是尾部，尾部节点指向 null
-    let pre = null
-    let current = head
-    let next
-    // 判断当前节点是否为空
-    // 不为空就先获取当前节点的下一节点
-    // 然后把当前节点的 next 设为上一个节点
-    // 然后把 current 设为下一个节点，pre 设为当前节点
-    while(current) {
-        next = current.next
-        current.next = pre
-        pre = current
-        current = next
-    }
-    return pre
+var reverseList = function (head) {
+  // 判断下变量边界问题
+  if (!head || !head.next) return head;
+  // 初始设置为空，因为第一个节点反转后就是尾部，尾部节点指向 null
+  let pre = null;
+  let current = head;
+  let next;
+  // 判断当前节点是否为空
+  // 不为空就先获取当前节点的下一节点
+  // 然后把当前节点的 next 设为上一个节点
+  // 然后把 current 设为下一个节点，pre 设为当前节点
+  while (current) {
+    next = current.next;
+    current.next = pre;
+    pre = current;
+    current = next;
+  }
+  return pre;
 };
 ```
-
-
 
 # 树
 
@@ -518,13 +513,13 @@ function TreeNode(val) {
   this.val = val;
   this.left = this.right = null;
 }
-var traversal = function(root) {
+var traversal = function (root) {
   if (root) {
     // 先序
-    console.log(root); 
+    console.log(root);
     traversal(root.left);
     // 中序
-    // console.log(root); 
+    // console.log(root);
     traversal(root.right);
     // 后序
     // console.log(root);
@@ -597,7 +592,7 @@ function pos(root) {
     let stack1 = [];
     let stack2 = [];
     // 后序遍历是先左再右最后根
-	// 所以对于一个栈来说，应该先 push 根节点
+    // 所以对于一个栈来说，应该先 push 根节点
     // 然后 push 右节点，最后 push 左节点
     stack1.push(root);
     while (stack1.length > 0) {
@@ -637,25 +632,25 @@ function pos(root) {
 
 ```js
 function predecessor(node) {
-  if (!node) return 
+  if (!node) return;
   // 结论 1
   if (node.left) {
-    return getRight(node.left)
+    return getRight(node.left);
   } else {
-    let parent = node.parent
+    let parent = node.parent;
     // 结论 2 3 的判断
-    while(parent && parent.right === node) {
-      node = parent
-      parent = node.parent
+    while (parent && parent.right === node) {
+      node = parent;
+      parent = node.parent;
     }
-    return parent
+    return parent;
   }
 }
 function getRight(node) {
-  if (!node) return 
-  node = node.right
-  while(node) node = node.right
-  return node
+  if (!node) return;
+  node = node.right;
+  while (node) node = node.right;
+  return node;
 }
 ```
 
@@ -670,26 +665,26 @@ function getRight(node) {
 
 ```js
 function successor(node) {
-  if (!node) return 
+  if (!node) return;
   // 结论 1
   if (node.right) {
-    return getLeft(node.right)
+    return getLeft(node.right);
   } else {
     // 结论 2
-    let parent = node.parent
+    let parent = node.parent;
     // 判断 parent 为空
-    while(parent && parent.left === node) {
-      node = parent
-      parent = node.parent
+    while (parent && parent.left === node) {
+      node = parent;
+      parent = node.parent;
     }
-    return parent
+    return parent;
   }
 }
 function getLeft(node) {
-  if (!node) return 
-  node = node.left
-  while(node) node = node.left
-  return node
+  if (!node) return;
+  node = node.left;
+  while (node) node = node.left;
+  return node;
 }
 ```
 
@@ -700,13 +695,13 @@ function getLeft(node) {
 以下是算法实现
 
 ```js
-var maxDepth = function(root) {
-    if (!root) return 0 
-    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+var maxDepth = function (root) {
+  if (!root) return 0;
+  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };
 ```
 
-对于该递归函数可以这样理解：一旦没有找到节点就会返回 0，每弹出一次递归函数就会加一，树有三层就会得到3。
+对于该递归函数可以这样理解：一旦没有找到节点就会返回 0，每弹出一次递归函数就会加一，树有三层就会得到 3。
 
 # 动态规划
 
@@ -724,10 +719,10 @@ var maxDepth = function(root) {
 
 ```js
 function fib(n) {
-  if (n < 2 && n >= 0) return n
-  return fib(n - 1) + fib(n - 2)
+  if (n < 2 && n >= 0) return n;
+  return fib(n - 1) + fib(n - 2);
 }
-fib(10)
+fib(10);
 ```
 
 以上代码已经可以完美的解决问题。但是以上解法却存在很严重的性能问题，当 n 越大的时候，需要的时间是指数增长的，这时候就可以通过动态规划来解决这个问题。
@@ -744,18 +739,18 @@ fib(10)
 
 ```js
 function fib(n) {
-  let array = new Array(n + 1).fill(null)
-  array[0] = 0
-  array[1] = 1
+  let array = new Array(n + 1).fill(null);
+  array[0] = 0;
+  array[1] = 1;
   for (let i = 2; i <= n; i++) {
-    array[i] = array[i - 1] + array[i - 2]
+    array[i] = array[i - 1] + array[i - 2];
   }
-  return array[n]
+  return array[n];
 }
-fib(10)
+fib(10);
 ```
 
-## 0 - 1背包问题
+## 0 - 1 背包问题
 
 该问题可以描述为：给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高。每个问题只能放入至多一次。
 
@@ -771,11 +766,11 @@ fib(10)
 
 对于这个问题来说，子问题就两个，分别是放物品和不放物品，可以通过以下表格来理解子问题
 
-| 物品 ID / 剩余容量 |  0   |  1   |  2   |  3   |  4   |  5   |
-| :----------------: | :--: | :--: | :--: | :--: | :--: | :--: |
-|         1          |  0   |  3   |  3   |  3   |  3   |  3   |
-|         2          |  0   |  3   |  7   |  10  |  10  |  10  |
-|         3          |  0   |  3   |  7   |  12  |  15  |  19  |
+| 物品 ID / 剩余容量 |  0  |  1  |  2  |  3  |  4  |  5  |
+| :----------------: | :-: | :-: | :-: | :-: | :-: | :-: |
+|         1          |  0  |  3  |  3  |  3  |  3  |  3  |
+|         2          |  0  |  3  |  7  | 10  | 10  | 10  |
+|         3          |  0  |  3  |  7  | 12  | 15  | 19  |
 
 直接来分析能放三种物品的情况，也就是最后一行
 
@@ -800,19 +795,19 @@ fib(10)
  * @returns
  */
 function knapsack(w, v, C) {
-  let length = w.length
-  if (length === 0) return 0
+  let length = w.length;
+  if (length === 0) return 0;
 
   // 对照表格，生成的二维数组，第一维代表物品，第二维代表背包剩余容量
   // 第二维中的元素代表背包物品总价值
-  let array = new Array(length).fill(new Array(C + 1).fill(null))
+  let array = new Array(length).fill(new Array(C + 1).fill(null));
 
   // 完成底部子问题的解
   for (let i = 0; i <= C; i++) {
     // 对照表格第一行， array[0] 代表物品 1
     // i 代表剩余总容量
     // 当剩余总容量大于物品 1 的重量时，记录下背包物品总价值，否则价值为 0
-    array[0][i] = i >= w[0] ? v[0] : 0
+    array[0][i] = i >= w[0] ? v[0] : 0;
   }
 
   // 自底向上开始解决子问题，从物品 2 开始
@@ -820,16 +815,16 @@ function knapsack(w, v, C) {
     for (let j = 0; j <= C; j++) {
       // 这里求解子问题，分别为不放当前物品和放当前物品
       // 先求不放当前物品的背包总价值，这里的值也就是对应表格中上一行对应的值
-      array[i][j] = array[i - 1][j]
+      array[i][j] = array[i - 1][j];
       // 判断当前剩余容量是否可以放入当前物品
       if (j >= w[i]) {
         // 可以放入的话，就比大小
         // 放入当前物品和不放入当前物品，哪个背包总价值大
-        array[i][j] = Math.max(array[i][j], v[i] + array[i - 1][j - w[i]])
+        array[i][j] = Math.max(array[i][j], v[i] + array[i - 1][j - w[i]]);
       }
     }
   }
-  return array[length - 1][C]
+  return array[length - 1][C];
 }
 ```
 
@@ -841,9 +836,9 @@ function knapsack(w, v, C) {
 
 对于以上这串数字来说，最长递增子序列就是 0, 3, 4, 8, 10，可以通过以下表格更清晰的理解
 
-| 数字 |  0   |  3   |  4   |  17  |  2   |  8   |  6   |  10  |
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| 长度 |  1   |  2   |  3   |  4   |  2   |  4   |  4   |  5   |
+| 数字 |  0  |  3  |  4  | 17  |  2  |  8  |  6  | 10  |
+| :--: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 长度 |  1  |  2  |  3  |  4  |  2  |  4  |  4  |  5  |
 
 通过以上表格可以很清晰的发现一个规律，找出刚好比当前数字小的数，并且在小的数组成的长度基础上加一。
 
@@ -851,24 +846,24 @@ function knapsack(w, v, C) {
 
 ```js
 function lis(n) {
-  if (n.length === 0) return 0
+  if (n.length === 0) return 0;
   // 创建一个和参数相同大小的数组，并填充值为 1
-  let array = new Array(n.length).fill(1)
+  let array = new Array(n.length).fill(1);
   // 从索引 1 开始遍历，因为数组已经所有都填充为 1 了
   for (let i = 1; i < n.length; i++) {
     // 从索引 0 遍历到 i
     // 判断索引 i 上的值是否大于之前的值
     for (let j = 0; j < i; j++) {
       if (n[i] > n[j]) {
-        array[i] = Math.max(array[i], 1 + array[j])
+        array[i] = Math.max(array[i], 1 + array[j]);
       }
     }
   }
-  let res = 1
+  let res = 1;
   for (let i = 0; i < array.length; i++) {
-    res = Math.max(res, array[i])
+    res = Math.max(res, array[i]);
   }
-  return res
+  return res;
 }
 ```
 
@@ -881,3 +876,58 @@ function lis(n) {
 
 如果你对于 Trie 树还不怎么了解，可以前往 [这里](../DataStruct/dataStruct-zh.md#trie) 阅读
 
+# 关于 Map
+
+## 49-字母异位词分组
+
+```js
+/**
+ * 给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
+ * 字母异位词 是由重新排列源单词的所有字母得到的一个新单词。
+ * 示例 1:
+ * 输入: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+ * 输出: [["bat"],["nat","tan"],["ate","eat","tea"]]
+ */
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+rl.on("line", (input) => {
+  if (input === "exit" || input === "quit") {
+    rl.close();
+  } else {
+    const strs = JSON.parse(input);
+    const groupAnagrams = (strs) => {
+      let codeToGroup = new Map();
+      for (let s of strs) {
+        let code = encode(s);
+        if (!codeToGroup.has(code)) {
+          codeToGroup.set(code, []);
+        }
+        codeToGroup.get(code).push(s);
+      }
+      let res = [];
+      for (let group of codeToGroup.values()) {
+        res.push(group);
+      }
+      console.log(res);
+    };
+    // 利用了这个编码技巧
+    const encode = (s) => {
+      let count = new Array(26).fill(0);
+      for (let c of s) {
+        let m = c.charCodeAt() - "a".charCodeAt();
+        console.log(m);
+        count[m]++;
+      }
+      return count.toString();
+    };
+    groupAnagrams(strs);
+  }
+});
+rl.on("close", () => {
+  console.log("程序结束");
+});
+```
